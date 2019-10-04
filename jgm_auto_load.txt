@@ -8,7 +8,7 @@ Dim train_x(), train_y(), house_x(), house_y(), i
 
 '从左到右，1到3
 For i = 1 To 3
-    train_x(i) = 350 + (i - 1) * 85 // 321 815
+    train_x(i) = 360 + (i - 1) * 90 // 321 815
     train_y(i) = 875 - (i - 1) * 45
 Next
 
@@ -89,7 +89,7 @@ Function loadtrain()
 	flag = 0
 	For i = 1 To 3
 		FindColor cx(i), cy(i), cx(i) + 55, cy(i) + 55, "3CC1FF", 1, 1, ssx, ssy
-//		ssx = 1 '收所有，注释掉后只收橙色
+		ssx = 1 '收所有，注释掉后只收橙色
 		If ssx > - 1  Then 
 			While True
 				TouchDown tx(i), ty(i)
@@ -99,7 +99,7 @@ Function loadtrain()
 					TouchMove ax, ay
 					Delay 100
 					TouchUp 
-					Delay 100
+					Delay 300
 				Else 
 					TouchUp
 					Delay 100
@@ -136,16 +136,16 @@ While True
 		If cx1 < 0  And cy1 < 0 Then
 			If n = iter - 1 Then 
 				avoid() '避免家国之光打断
-				money() '收钱,注释掉此行后不进行收钱
-				upgrade (idx) '升级建筑，注释掉此行后不进行升级
+				//money() '收钱,注释掉此行后不进行收钱
+				//upgrade (idx) '升级建筑，注释掉此行后不进行升级
 			Else 
 				Delay 1000
 			End If
 		Else 
 			res = loadtrain() '卸货
-			If res = 1 Then 
-				restart() '重新登陆
-			End If
+			//If res = 1 Then 
+			//	restart() '重新登陆
+			//End If
 		End If
 		n = n + 1
 	Wend
